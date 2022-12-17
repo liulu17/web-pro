@@ -1,3 +1,4 @@
+
 use std::sync::{Arc, atomic};
 
 //use serde::{Deserialize, Serialize};
@@ -244,21 +245,3 @@ use std::sync::{Arc, atomic};
 //
 //    warp::serve(routes).run(([127, 0, 0, 1], 3030)).await;
 //}
-struct test(i32);
-impl Drop for test {
-    fn drop(&mut self) {
-        println!("drop test");
-    }
-}
-
-fn test1(t:test) -> test{
-    println!("lll");
-    t
-}
-fn main() {
-   let mut x = test(10);
-    // let y = x;
-    // x = test(20);
-    x = test1(x);
-    println!("end");
-}
