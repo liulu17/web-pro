@@ -1,2 +1,2 @@
 [workspace]
-members = ["./chapter-03","chapter-04"]
+members = ["./chapter-03","./chapter-04"]

@@ -1,5 +1,7 @@
+// use std::intrinsics::size_of;
 use std::str::FromStr;
 use std::io::{Error, ErrorKind};
+use std::rc::Rc;
 use warp::{
     Filter,
     http::Method,
@@ -93,20 +95,22 @@ async fn return_error(r: Rejection) -> Result<impl Reply, Rejection> {
 
 #[tokio::main]
 async fn main() {
-    let cors = warp::cors()
-        .allow_any_origin()
-        // .allow_header("content-type")
-        .allow_methods(&[Method::PUT, Method::DELETE, Method::GET, Method::POST]);
-
-    let get_items = warp::get()
-        .and(warp::path("questions"))
-        .and(warp::path::end())
-        .and_then(get_questions)
-        .recover(return_error);
-
-    let routes = get_items.with(cors);
-
-    warp::serve(routes)
-        .run(([127, 0, 0, 1], 3030))
-        .await;
+    // let cors = warp::cors()
+    //     .allow_any_origin()
+    //     // .allow_header("content-type")
+    //     .allow_methods(&[Method::PUT, Method::DELETE, Method::GET, Method::POST]);
+    //
+    // let get_items = warp::get()
+    //     .and(warp::path("questions"))
+    //     .and(warp::path::end())
+    //     .and_then(get_questions)
+    //     .recover(return_error);
+    //
+    // let routes = get_items.with(cors);
+    //
+    // warp::serve(routes)
+    //     .run(([127, 0, 0, 1], 3030))
+    //     .await;
+    use std::rc::Rc;
+    println!("{}",core::mem::size_of::<Rc::<i32>>())
 }
